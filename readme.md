@@ -194,7 +194,7 @@ ORDER BY population DESC
 LIMIT 2 OFFSET 2;
 ```
 
-## 6 Multi-table queries with JOINs
+## 6. Multi-table queries with JOINs
 
 ### 6.1
 
@@ -225,4 +225,29 @@ FROM movies
 INNER JOIN boxoffice
 ON movies.id = boxoffice.movie_id
 ORDER BY rating DESC;
+```
+
+## 7. OUTER JOINs
+
+### 7.1
+
+```sql
+SELECT DISTINCT building
+FROM employees;
+```
+
+### 7.2
+
+```sql
+SELECT building_name, capacity
+FROM buildings;
+```
+
+### 7.3
+
+```sql
+SELECT DISTINCT building_name, role
+FROM buildings
+LEFT JOIN employees
+ON buildings.building_name = employees.building;
 ```
