@@ -71,7 +71,7 @@ WHERE year
 LIMIT 5;
 ```
 
-## 3. Queries with constraints (Pt.1)
+## 3. Queries with constraints (Pt.2)
 
 ### 3.1
 
@@ -107,4 +107,41 @@ SELECT title
 FROM movies
 WHERE title
 LIKE "WALL-%";
+```
+
+## 4. Filtering and sorting Query results
+
+### 4.1
+
+```sql
+SELECT DISTINCT director
+FROM movies
+ORDER BY director ASC;
+```
+
+### 4.2
+
+```sql
+SELECT title, year
+FROM movies
+ORDER BY year DESC
+LIMIT 4;
+```
+
+### 4.3
+
+```sql
+SELECT title, year
+FROM movies
+ORDER BY title ASC, year ASC
+LIMIT 5;
+```
+
+### 4.4
+
+```sql
+SELECT title, year
+FROM movies
+ORDER BY title ASC, year ASC
+LIMIT 5 OFFSET 5;
 ```
