@@ -193,3 +193,36 @@ WHERE country = 'United States'
 ORDER BY population DESC
 LIMIT 2 OFFSET 2;
 ```
+
+## 6 Multi-table queries with JOINs
+
+### 6.1
+
+```sql
+SELECT id, title, domestic_sales, international_sales
+FROM movies
+INNER JOIN boxoffice
+ON movies.id = boxoffice.movie_id
+ORDER BY id;
+```
+
+### 6.2
+
+```sql
+SELECT id, title, domestic_sales, international_sales
+FROM movies
+INNER JOIN boxoffice
+ON movies.id = boxoffice.movie_id
+WHERE international_sales > domestic_sales
+ORDER BY id;
+```
+
+### 6.3
+
+```sql
+SELECT id, title, rating
+FROM movies
+INNER JOIN boxoffice
+ON movies.id = boxoffice.movie_id
+ORDER BY rating DESC;
+```
