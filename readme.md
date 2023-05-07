@@ -33,3 +33,40 @@ SELECT title, year FROM movies;
 ```sql
 SELECT * FROM movies;
 ```
+
+## 2. Queries with constraints (Pt.1)
+
+### 2.1
+
+```sql
+SELECT title
+FROM movies
+WHERE id = 6;
+```
+
+### 2.1
+
+```sql
+SELECT title
+FROM movies
+WHERE year
+BETWEEN 2000 AND 2010;
+```
+
+### 2.1
+
+```sql
+SELECT title
+FROM movies
+WHERE year
+NOT BETWEEN 2000 AND 2010;
+```
+
+### 2.1
+
+```sql
+SELECT title, year
+FROM movies
+WHERE year
+LIMIT 5;
+```
