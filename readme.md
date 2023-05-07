@@ -44,7 +44,7 @@ FROM movies
 WHERE id = 6;
 ```
 
-### 2.1
+### 2.2
 
 ```sql
 SELECT title
@@ -53,7 +53,7 @@ WHERE year
 BETWEEN 2000 AND 2010;
 ```
 
-### 2.1
+### 2.3
 
 ```sql
 SELECT title
@@ -62,11 +62,49 @@ WHERE year
 NOT BETWEEN 2000 AND 2010;
 ```
 
-### 2.1
+### 2.4
 
 ```sql
 SELECT title, year
 FROM movies
 WHERE year
 LIMIT 5;
+```
+
+## 3. Queries with constraints (Pt.1)
+
+### 3.1
+
+```sql
+SELECT title
+FROM movies
+WHERE title
+LIKE "Toy Story%";
+```
+
+### 3.2
+
+```sql
+SELECT title
+FROM movies
+WHERE director
+LIKE "John Lasseter";
+```
+
+### 3.3
+
+```sql
+SELECT title
+FROM movies
+WHERE director
+NOT LIKE "John Lasseter";
+```
+
+### 3.4
+
+```sql
+SELECT title
+FROM movies
+WHERE title
+LIKE "WALL-%";
 ```
