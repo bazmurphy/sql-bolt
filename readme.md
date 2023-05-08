@@ -271,3 +271,31 @@ LEFT JOIN employees
 ON buildings.building_name = employees.building
 WHERE name IS NULL;
 ```
+
+## 9 Queries with expressions
+
+### 9.1
+
+```sql
+SELECT id, title, (domestic_sales + international_sales) / 1000000 AS combined_sales
+FROM movies
+LEFT JOIN boxoffice
+ON movies.id = boxoffice.movie_id;
+```
+
+### 9.2
+
+```sql
+SELECT id, title, rating * 10 AS percent
+FROM movies
+LEFT JOIN boxoffice
+ON movies.id = boxoffice.movie_id;
+```
+
+### 9.3
+
+```sql
+SELECT id, title, year
+FROM movies
+WHERE year % 2 = 0;
+```
