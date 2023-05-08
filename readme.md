@@ -251,3 +251,23 @@ FROM buildings
 LEFT JOIN employees
 ON buildings.building_name = employees.building;
 ```
+
+## 8.
+
+### 8.1
+
+```sql
+SELECT name, role
+FROM employees
+WHERE building IS NULL;
+```
+
+### 8.2
+
+```sql
+SELECT building_name, name
+FROM buildings
+LEFT JOIN employees
+ON buildings.building_name = employees.building
+WHERE name IS NULL;
+```
