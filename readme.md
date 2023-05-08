@@ -252,7 +252,7 @@ LEFT JOIN employees
 ON buildings.building_name = employees.building;
 ```
 
-## 8.
+## 8. A short note on NULLs
 
 ### 8.1
 
