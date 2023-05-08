@@ -272,7 +272,7 @@ ON buildings.building_name = employees.building
 WHERE name IS NULL;
 ```
 
-## 9 Queries with expressions
+## 9. Queries with expressions
 
 ### 9.1
 
@@ -298,4 +298,140 @@ ON movies.id = boxoffice.movie_id;
 SELECT id, title, year
 FROM movies
 WHERE year % 2 = 0;
+```
+
+## 10. Queries with aggregates (Pt. 1)
+
+### 10.1
+
+```sql
+SELECT matchid, player
+FROM goal
+WHERE teamid = 'GER';
+```
+
+### 10.2
+
+```sql
+SELECT id,stadium,team1,team2
+FROM game
+WHERE id = 1012;
+```
+
+### 10.3
+
+```sql
+SELECT player,teamid, stadium, mdate
+FROM game
+JOIN goal
+ON game.id = goal.matchid
+WHERE teamid = 'GER';
+```
+
+### 10.4
+
+```sql
+SELECT team1, team2, player
+FROM game
+JOIN goal
+ON game.id = goal.matchid
+WHERE player LIKE 'Mario%';
+```
+
+### 10.5
+
+```sql
+SELECT player, teamid, coach, gtime
+FROM goal
+JOIN eteam
+ON goal.teamid = eteam.id
+WHERE gtime <= 10;
+```
+
+### 10.6
+
+```sql
+SELECT mdate, teamname
+FROM game
+JOIN eteam
+ON game.team1 = eteam.id
+WHERE coach = 'Fernando Santos';
+```
+
+### 10.7
+
+```sql
+SELECT player
+FROM game
+JOIN goal
+ON game.id = goal.matchid
+WHERE stadium = 'National Stadium, Warsaw';
+```
+
+### 10.8
+
+```sql
+SELECT DISTINCT player
+FROM game
+JOIN goal
+ON game.id = goal.matchid
+WHERE (team1 = 'GER' OR team2 = 'GER')
+AND teamid != 'GER';
+```
+
+### 10.9
+
+```sql
+SELECT teamname, COUNT(teamname)
+FROM eteam
+JOIN goal
+ON eteam.id = goal.teamid
+GROUP BY teamname;
+```
+
+### 10.10
+
+```sql
+SELECT stadium, COUNT(matchid)
+FROM game
+JOIN goal
+ON game.id = goal.matchid
+GROUP BY stadium;
+```
+
+### 10.11
+
+```sql
+SELECT id, mdate, count(id)
+FROM game
+JOIN goal
+ON game.id = goal.matchid
+WHERE (team1 = 'POL' OR team2 = 'POL')
+GROUP BY id, mdate;
+```
+
+### 10.12
+
+```sql
+SELECT matchid, mdate, COUNT(matchid)
+FROM game
+JOIN goal
+ON game.id = goal.matchid
+WHERE teamid = 'GER'
+GROUP BY matchid, mdate;
+```
+
+### 10.13
+
+```sql
+SELECT
+  mdate,
+  team1,
+  SUM(CASE WHEN teamid = team1 THEN 1 ELSE 0 END) AS score1,
+  team2,
+  SUM(CASE WHEN teamid = team2 THEN 1 ELSE 0 END) AS score2
+FROM game
+LEFT JOIN goal
+ON game.id = goal.matchid
+GROUP BY mdate, matchid, team1, team2;
 ```
