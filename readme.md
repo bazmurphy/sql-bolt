@@ -305,5 +305,22 @@ WHERE year % 2 = 0;
 ### 10.1
 
 ```sql
-.
+SELECT MAX(years_employed)
+FROM employees;
+```
+
+### 10.2
+
+```sql
+SELECT role, AVG(years_employed)
+FROM employees
+GROUP BY role;
+```
+
+### 10.3
+
+```sql
+SELECT building, TOTAL(years_employed)
+FROM employees
+GROUP BY building;
 ```
